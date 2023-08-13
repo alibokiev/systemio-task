@@ -6,12 +6,12 @@
                     http://gediminasm.org/schemas/orm/doctrine-extensions-mapping"
                   xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping">
 
-<entity name="App\Users\Domain\Entity\User" table="users_user">
+<entity name="App\Products\Domain\Entity\Product" table="products_product">
         <id name="id" type="string" length="26">
             <generator strategy="NONE"/>
         </id>
-        <field name="email" type="string" unique="true"/>
-        <field name="password" type="string" nullable="true"/>
+        <field name="name" type="string" unique="false"/>
+        <field name="price" type="string" nullable="false"/>
     </entity>
 
 </doctrine-mapping>
