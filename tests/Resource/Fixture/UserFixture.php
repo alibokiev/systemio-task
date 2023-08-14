@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Resource\Fixture\Users;
+namespace App\Tests\Resource\Fixture;
 
 use App\Tests\Tools\FakerTools;
 use App\Users\Domain\Factory\UserFactory;

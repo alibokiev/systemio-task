@@ -21,13 +21,18 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Users/Infrastructure/Database/ORM'
                 prefix: 'App\Users\Domain\Entity'
                 alias: Users
-
             Products:
                 is_bundle: false
                 type: xml
                 dir: '%kernel.project_dir%/src/Products/Infrastructure/Database/ORM'
                 prefix: 'App\Products\Domain\Entity'
                 alias: Products
+            Taxes:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/Shared/Infrastructure/Database/ORM'
+                prefix: 'App\Shared\Domain\Entity'
+                alias: Taxes
 
 #when@test:
 #    doctrine:

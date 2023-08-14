@@ -2,7 +2,7 @@
 
 namespace App\Tests\Functional\Users\Infrastructure\Repository;
 
-use App\Tests\Resource\Fixture\Users\UserFixture;
+use App\Tests\Resource\Fixture\UserFixture;
 use App\Tests\Tools\DITools;
 use App\Tests\Tools\FakerTools;
 use App\Users\Domain\Entity\User;
