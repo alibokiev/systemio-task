@@ -1,0 +1,19 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                    https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd
+                    http://gediminasm.org/schemas/orm/doctrine-extensions-mapping
+                    http://gediminasm.org/schemas/orm/doctrine-extensions-mapping"
+                  xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping">
+
+<entity name="App\Shared\Domain\Entity\Tax" table="taxes_tax">
+        <id name="id" type="integer" column="id">
+            <generator strategy="IDENTITY"/>
+            <sequence-generator sequence-name="taxes_tax_id_seq" allocation-size="100" initial-value="1" />
+        </id>
+        <field name="taxPercent" type="string" unique="false"/>
+        <field name="country" type="string" nullable="false"/>
+        <field name="countryAbbreviations" type="string" nullable="false"/>
+    </entity>
+
+</doctrine-mapping>
