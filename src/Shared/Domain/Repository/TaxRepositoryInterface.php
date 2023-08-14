@@ -10,5 +10,5 @@ interface TaxRepositoryInterface
 
     public function findById(string $id): ?Tax;
 
-    public function findBycCountry(string $country): ?Tax;
+    public function findByCountry(string $country): ?Tax;
 }

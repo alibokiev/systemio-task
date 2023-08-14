@@ -25,7 +25,7 @@ class TaxRepository extends ServiceEntityRepository implements TaxRepositoryInte
         return $this->find($id);
     }
 
-    public function findBycCountry(string $country): ?Tax
+    public function findByCountry(string $country): ?Tax
     {
         return $this->findOneBy(['country' => $country]);
     }

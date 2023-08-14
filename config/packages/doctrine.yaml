@@ -33,6 +33,12 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Shared/Infrastructure/Database/ORM'
                 prefix: 'App\Shared\Domain\Entity'
                 alias: Taxes
+            Coupons:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/Shared/Infrastructure/Database/ORM'
+                prefix: 'App\Shared\Domain\Entity'
+                alias: Coupons
 
 #when@test:
 #    doctrine:

@@ -2,15 +2,18 @@
 
 namespace App\Products\Domain\Service;
 
-use App\Products\Domain\Entity\Product;
-use Symfony\Component\HttpFoundation\Request;
+use App\Shared\Infrastructure\Repository\TaxRepository;
 
 class TaxCalculator
 {
-    public static function getPercentByTaxNumber(string $taxNumber)
+    public function __construct(private readonly TaxRepository $taxRepository)
     {
-
     }
 
+    public function getPercentByTaxNumber(string $taxNumber)
+    {
+        $tax = $this->taxRepository->findOneBy(['countryAbbreviations' => mb_substr($taxNumber, 0, 2)]);
 
+        return $tax->taxPercent;
+    }
 }

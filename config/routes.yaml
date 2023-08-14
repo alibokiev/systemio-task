@@ -1,5 +1,5 @@
-controllers:
-    resource: ../src/Shared/Infrastructure/Controller/
+products:
+    resource: ../src/Products/Infrastructure/Controller/
     type: annotation
 
 users:
