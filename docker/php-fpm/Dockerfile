@@ -1,4 +1,4 @@
-FROM php:8.1.0-fpm-alpine
+FROM php:8.2-fpm-alpine
 
 RUN apk add --no-cache curl git build-base zlib-dev oniguruma-dev autoconf bash
 RUN apk add --update linux-headers
@@ -31,6 +31,8 @@ COPY --chown=www-data:www-data ./ /var/www
 WORKDIR /var/www
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+ENV COMPOSER_ALLOW_SUPERUSER=1
 
 RUN composer install --no-interaction
 
