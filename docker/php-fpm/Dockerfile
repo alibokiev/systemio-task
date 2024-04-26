@@ -27,7 +27,7 @@ RUN apk --no-cache add shadow && \
     usermod -o -u ${PUID} -g www-data www-data
 
 RUN chown www-data:www-data /var/www
-COPY --chown=www-data:www-data ./ /var/www
+COPY ./../../ /var/www
 WORKDIR /var/www
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer

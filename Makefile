@@ -2,6 +2,9 @@
 DOCKER_COMPOSE = docker compose -f ./docker/docker-compose.yml
 DOCKER_COMPOSE_PHP_FPM_EXEC = ${DOCKER_COMPOSE} exec -u www-data php-fpm
 
+setup:
+	make build up composer-install
+
 build:
 	${DOCKER_COMPOSE} build
 
@@ -33,7 +36,11 @@ dc_restart:
 
 app_bash:
 	${DOCKER_COMPOSE} exec -u www-data php-fpm bash
+
 php: app_bash
+
+composer-install:
+	${DOCKER_COMPOSE_PHP_FPM_EXEC} composer install
 
 test:
 	${DOCKER_COMPOSE} exec -u www-data php-fpm bin/phpunit
