@@ -2,17 +2,17 @@
 
 namespace App\PaymentProcessor;
 
-use Contracts\PaymentProcessorInterface;
+use App\PaymentProcessor\Contracts\PaymentProcessorInterface;
 use Exception;
 
 class StripePaymentProcessor implements PaymentProcessorInterface
 {
     /**
-     * @param int $price
+     * @param float $price
      * @return bool true if payment was succeeded, false otherwise
      * @throws Exception
      */
-    public function processPayment(int $price): bool
+    public function processPayment(float $price): bool
     {
         if ($price < 10) {
             throw new Exception('Too high price');

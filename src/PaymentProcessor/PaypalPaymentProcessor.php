@@ -2,17 +2,17 @@
 
 namespace App\PaymentProcessor;
 
-use Contracts\PaymentProcessorInterface;
+use App\PaymentProcessor\Contracts\PaymentProcessorInterface;
 use Exception;
 
 class PaypalPaymentProcessor implements PaymentProcessorInterface
 {
     /**
-     * @param int $price
+     * @param float $price
      * @return bool true if payment was succeeded, false otherwise
      * @throws Exception in case of a failed payment
      */
-    public function pay(int $price): bool
+    public function pay(float $price): bool
     {
         if ($price > 100) {
             throw new Exception('Too high price');
