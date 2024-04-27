@@ -31,6 +31,9 @@ class TaxRepository extends ServiceEntityRepository implements TaxRepositoryInte
         return $this->findOneBy(['country' => $country]);
     }
 
+    //  Лучше было бы если для определение стран по налоговому номеру сделать отдельный сервис, или возможно есть
+    // какой нибудь внешний сервис для этого. Но так как суть задачи не в этом я просто сделал такую логику.
+    // По двум первым символам номера.
     public function findByCountryAbbreviations(string $taxNumber): ?Tax
     {
         return $this->findOneBy(['countryAbbreviations' => mb_substr($taxNumber, 0, 2)]) ?? throw new NotFoundHttpException();
