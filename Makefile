@@ -45,8 +45,8 @@ composer-install:
 test:
 	${DOCKER_COMPOSE} exec -u www-data php-fpm bin/phpunit
 cache:
-	docker-compose -f ./docker/docker-compose.yml exec -u www-data php-fpm bin/console cache:clear
-	docker-compose -f ./docker/docker-compose.yml exec -u www-data php-fpm bin/console cache:clear --env=test
+	${DOCKER_COMPOSE_PHP_FPM_EXEC} bin/console cache:clear
+	${DOCKER_COMPOSE_PHP_FPM_EXEC} bin/console cache:clear --env=test
 
 db_migrate:
 	${DOCKER_COMPOSE} exec -u www-data php-fpm bin/console doctrine:migrations:migrate --no-interaction

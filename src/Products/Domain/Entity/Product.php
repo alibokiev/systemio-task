@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace App\Products\Domain\Entity;
 
-use App\Shared\Domain\Service\UlidService;
 use Doctrine\ORM\Mapping as ORM;
 
 class Product
 {
     #[ORM\Id]
-    private string $id;
+    #[ORM\GeneratedValue(strategy: 'AUTO')]
+    #[ORM\Column(type: 'integer')]
+    private int $id;
 
     #[ORM\Column(type: 'string', length: 255)]
     private string $name;
@@ -20,10 +21,9 @@ class Product
 
     public function __construct()
     {
-        $this->id = UlidService::generate();
     }
 
-    public function getId(): string
+    public function getId(): int
     {
         return $this->id;
     }
@@ -54,7 +54,7 @@ class Product
         // TODO: Implement eraseCredentials() method.
     }
 
-    public function getProductIdentifier(): string
+    public function getProductIdentifier(): int
     {
         return $this->id;
     }
