@@ -16,8 +16,8 @@ class Tax
     #[ORM\Column(type: 'string')]
     private string $country;
 
-    #[ORM\Column(type: 'string')]
-    private string $taxPercent;
+    #[ORM\Column(name: 'tax_percent', type: 'integer')]
+    private int $taxPercent;
 
     #[ORM\Column(type: 'string')]
     private string $countryAbbreviations;
@@ -42,12 +42,12 @@ class Tax
         $this->country = $country;
     }
 
-    public function getTaxPercent(): string
+    public function getTaxPercent(): int
     {
         return $this->taxPercent;
     }
 
-    public function setTaxPercent(string $taxPercent): void
+    public function setTaxPercent(int $taxPercent): void
     {
         $this->taxPercent = $taxPercent;
     }

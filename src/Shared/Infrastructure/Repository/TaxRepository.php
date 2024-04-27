@@ -29,4 +29,9 @@ class TaxRepository extends ServiceEntityRepository implements TaxRepositoryInte
     {
         return $this->findOneBy(['country' => $country]);
     }
+
+    public function findByCountryAbbreviations(string $taxNumber): ?Tax
+    {
+        return $this->findOneBy(['countryAbbreviations' => mb_substr($taxNumber, 0, 2)]);
+    }
 }
