@@ -11,7 +11,7 @@ class Coupon
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: 'AUTO')]
     #[ORM\Column(type: 'integer')]
-    private string $id;
+    private int $id;
 
     #[ORM\Column(type: 'string')]
     private string $code;
@@ -22,12 +22,12 @@ class Coupon
     #[ORM\Column(type: 'string', columnDefinition: "ENUM('percent', 'fix')")]
     private string $type;
 
-    public function getId(): string
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function setId(string $id): void
+    public function setId(int $id): void
     {
         $this->id = $id;
     }
