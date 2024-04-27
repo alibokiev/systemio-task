@@ -5,6 +5,7 @@ namespace App\Shared\Infrastructure\Repository;
 use App\Shared\Domain\Entity\Coupon;
 use App\Shared\Domain\Repository\CouponRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NoResultException;
 use Doctrine\Persistence\ManagerRegistry;
 
 class CouponRepository extends ServiceEntityRepository implements CouponRepositoryInterface
@@ -23,5 +24,13 @@ class CouponRepository extends ServiceEntityRepository implements CouponReposito
     public function findById(string $id): ?Coupon
     {
         return $this->find($id);
+    }
+
+    /**
+     * @throws NoResultException
+     */
+    public function findByCode(string $code): ?Coupon
+    {
+        return $this->findOneBy(['code' => $code]) ?? throw new NoResultException;
     }
 }

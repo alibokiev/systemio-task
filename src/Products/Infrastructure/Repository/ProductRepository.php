@@ -8,6 +8,7 @@ use App\Products\Domain\Entity\Product;
 use App\Products\Domain\Repository\ProductRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ProductRepository extends ServiceEntityRepository implements ProductRepositoryInterface
 {
@@ -24,7 +25,13 @@ class ProductRepository extends ServiceEntityRepository implements ProductReposi
 
     public function findById(int $id): ?Product
     {
-        return $this->find($id);
+        $product = $this->find($id);
+
+        if (null === $product) {
+            throw new NotFoundHttpException();
+        }
+
+        return $product;
     }
 
     public function findByName(string $name): ?Product

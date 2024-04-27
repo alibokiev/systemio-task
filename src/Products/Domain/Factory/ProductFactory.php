@@ -8,12 +8,12 @@ use App\Products\Domain\Entity\Product;
 
 class ProductFactory
 {
-    public function create(string $name, string $price): Product
+    public function create(string $name, float $price): Product
     {
-        $user = new Product();
+        $product = new Product();
 
-        $user->setData($name, $price);
+        $product->setData($name, $price);
 
-        return $user;
+        return $product;
     }
 }

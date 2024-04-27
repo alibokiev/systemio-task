@@ -59,7 +59,7 @@ class Product
         return $this->id;
     }
 
-    public function setData(string $name,  $price): void
+    public function setData(string $name, float $price): void
     {
         $this->name = $name;
         $this->price = $price;

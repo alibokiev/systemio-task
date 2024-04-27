@@ -6,6 +6,7 @@ use App\Shared\Domain\Entity\Tax;
 use App\Shared\Domain\Repository\TaxRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class TaxRepository extends ServiceEntityRepository implements TaxRepositoryInterface
 {
@@ -32,6 +33,6 @@ class TaxRepository extends ServiceEntityRepository implements TaxRepositoryInte
 
     public function findByCountryAbbreviations(string $taxNumber): ?Tax
     {
-        return $this->findOneBy(['countryAbbreviations' => mb_substr($taxNumber, 0, 2)]);
+        return $this->findOneBy(['countryAbbreviations' => mb_substr($taxNumber, 0, 2)]) ?? throw new NotFoundHttpException();
     }
 }

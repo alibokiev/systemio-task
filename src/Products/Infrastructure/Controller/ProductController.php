@@ -25,11 +25,10 @@ class ProductController extends AbstractController
     {
         $request->validate();
 
-        $product = $this->productRepository->findByUlid($request->id);
+        $product = $this->productRepository->findById($request->product);
 
-        $this->priceCalculator->calculate($product, $request);
+        $result = $this->priceCalculator->calculate($product, $request);
 
-        return new JsonResponse([
-        ]);
+        return new JsonResponse($result);
     }
 }
