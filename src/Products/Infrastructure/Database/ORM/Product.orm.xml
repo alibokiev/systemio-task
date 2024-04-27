@@ -7,9 +7,10 @@
                   xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping">
 
 <entity name="App\Products\Domain\Entity\Product" table="products_product">
-        <id name="id" type="string" length="26">
-            <generator strategy="NONE"/>
-        </id>
+    <id name="id" type="integer" column="id">
+        <generator strategy="IDENTITY"/>
+        <sequence-generator sequence-name="products_product_id_seq" allocation-size="100"/>
+    </id>
         <field name="name" type="string" unique="false"/>
         <field name="price" type="string" nullable="false"/>
     </entity>
