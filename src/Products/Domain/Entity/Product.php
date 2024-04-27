@@ -39,12 +39,12 @@ class Product
         $this->name = $name;
     }
 
-    public function getPrice(): string
+    public function getPrice(): float
     {
         return $this->price;
     }
 
-    public function setPrice(string $price): void
+    public function setPrice(float $price): void
     {
         $this->price = $price;
     }
