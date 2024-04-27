@@ -5,14 +5,18 @@ declare(strict_types=1);
 namespace App\Products\Domain\Entity;
 
 use App\Shared\Domain\Service\UlidService;
+use Doctrine\ORM\Mapping as ORM;
 
 class Product
 {
+    #[ORM\Id]
     private string $id;
 
+    #[ORM\Column(type: 'string', length: 255)]
     private string $name;
 
-    private string $price;
+    #[ORM\Column(type: 'float', length: 255)]
+    private float $price;
 
     public function __construct()
     {

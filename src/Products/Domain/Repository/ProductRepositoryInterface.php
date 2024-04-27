@@ -10,7 +10,7 @@ interface ProductRepositoryInterface
 {
     public function add(Product $product): void;
 
-    public function findByUlid(string $ulid): ?Product;
+    public function findById(int $id): ?Product;
 
     public function findByName(string $name): ?Product;
 }

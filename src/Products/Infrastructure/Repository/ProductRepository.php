@@ -22,9 +22,9 @@ class ProductRepository extends ServiceEntityRepository implements ProductReposi
         $this->_em->flush();
     }
 
-    public function findByUlid(string $ulid): ?Product
+    public function findById(int $id): ?Product
     {
-        return $this->find($ulid);
+        return $this->find($id);
     }
 
     public function findByName(string $name): ?Product

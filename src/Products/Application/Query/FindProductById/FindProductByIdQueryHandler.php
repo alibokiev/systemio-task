@@ -2,26 +2,31 @@
 
 declare(strict_types=1);
 
-namespace App\Product\Application\Query\FindProductById;
+namespace App\Products\Application\Query\FindProductById;
 
 use App\Shared\Application\Query\QueryHandlerInterface;
-use App\Users\Application\DTO\UserDTO;
-use App\Users\Domain\Repository\UserRepositoryInterface;
+use App\Products\Application\DTO\ProductDTO;
+use App\Products\Domain\Repository\ProductRepositoryInterface;
 
 class FindProductByIdQueryHandler implements QueryHandlerInterface
 {
-    public function __construct(private readonly UserRepositoryInterface $userRepository)
+    public function __construct(private readonly ProductRepositoryInterface $productRepository)
     {
     }
 
-    public function __invoke(FindUserByEmailQuery $query): UserDTO
+    /**
+     * @param FindProductByIdQuery $query
+     * @return ProductDTO
+     * @throws \Exception
+     */
+    public function __invoke(FindProductByIdQuery $query): ProductDTO
     {
-        $user = $this->userRepository->findByEmail($query->email);
+        $product = $this->productRepository->findById($query->id);
 
-        if (!$user) {
+        if (!$product) {
             throw new \Exception('User not found');
         }
 
-        return UserDTO::fromEntity($user);
+        return ProductDTO::fromEntity($product);
     }
 }
