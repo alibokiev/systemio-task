@@ -8,12 +8,12 @@ use App\Products\Domain\Entity\Product;
 
 class ProductDTO
 {
-    public function __construct(public readonly string $ulid, public readonly string $email)
+    public function __construct(public readonly string $name, public readonly string $price)
     {
     }
 
-    public static function fromEntity(Product $user): self
+    public static function fromEntity(Product $product): self
     {
-        return new self($user->getId(), $user->getEmail());
+        return new self($product->getId(), $product->getPrice());
     }
 }
